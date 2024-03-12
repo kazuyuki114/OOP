@@ -7,15 +7,29 @@ public class ArraySort {
         int n;
         int[] arr;
         int sum = 0;
+        // Input the number of elements
         do{
             System.out.print("Enter the number of elements in the array(>0): ");
             n = scanner.nextInt();
         } while (n <= 0);
         arr = new int[n];
         for(int i = 0; i < n; i++){
-            System.out.print("a[" + (i + 1) + "]= ");
-            arr[i] = scanner.nextInt();
+            while(true){
+                try {
+                    // Input array
+                    System.out.print("a[" + (i + 1) + "]= ");
+                    arr[i] = scanner.nextInt();
+                    break;
+                } catch (Exception e){
+                    // Print error
+                    System.out.println("Invalid input. Please enter a valid integer.");
+                    // Kill buffer
+                    scanner.nextLine();
+                }
+            }
+
             sum += arr[i];
+
         }
         System.out.println("Sum of all elements in the array: "+ sum);
         System.out.println("Average value of the array: "+ (double)(sum / arr.length));
@@ -75,4 +89,3 @@ public class ArraySort {
     }
 
 }
-
