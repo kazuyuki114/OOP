@@ -4,6 +4,7 @@ public class Ex2_2_5 {
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         double num1,num2;
+        // Input num1
         while(true){
             System.out.print("Enter the first number: ");
             try {
@@ -14,6 +15,7 @@ public class Ex2_2_5 {
                 scanner.nextLine();
             }
         }
+        // Input num2
         while(true){
             System.out.print("Enter the second number: ");
             try {
