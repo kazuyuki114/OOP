@@ -1,3 +1,3 @@
- 1. If cancel then the file can't be saved and runned
+ 1. If users choose cancel then it will display "You've choosen: NO"
  2. How to change to YES/NO
  int option = JOptionPane.showConfirmDialog(null, "Do you want to change the first class ticket", "Kazuyuki",JOptionPane.YES_NO_OPTION);
