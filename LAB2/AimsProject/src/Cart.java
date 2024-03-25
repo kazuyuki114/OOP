@@ -1,7 +1,7 @@
 public class Cart {
-    public static final int MAX_NUMBERS_ORDERED = 20;
-    private  DigitalVideoDisc itemOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
-    public int currentItems = 0;
+    public static final int MAX_NUMBERS_ORDERED = 20; // Define the maxinum items a user can order
+    private DigitalVideoDisc[] itemOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED]; // Array of discs
+    public int currentItems = 0; // Give the index of the last item the user has ordered
     public void addDigitalVideoDisc(DigitalVideoDisc disc){
         if (currentItems == MAX_NUMBERS_ORDERED){
             System.out.println("The cart is almost full");
