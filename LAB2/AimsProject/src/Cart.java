@@ -13,7 +13,26 @@ public class Cart {
         }
     }
     public void removeDigitalVideoDisc(DigitalVideoDisc disc){
-
+        if (currentItems > 0) {
+            int index = -1;
+            for (int i = 0; i < currentItems; i++) {
+                if (disc.equals(itemOrdered[i])) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index != -1) {
+                for (int i = index + 1; i < currentItems; i++) {
+                    itemOrdered[i - 1] = itemOrdered[i];
+                }
+                itemOrdered[currentItems] = null;
+                currentItems--;
+            } else {
+                System.out.println("Don't found the given disc!");
+            }
+        } else {
+            System.out.println("The cart is empty!");
+        }
     }
     public float totalCost(){
         float totalCost = 0;
