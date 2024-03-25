@@ -8,7 +8,7 @@ public class Aims {
         cart.addDigitalVideoDisc(disc2);
         cart.addDigitalVideoDisc(disc3);
         System.out.println(cart.totalCost());
-        cart.removeDigitalVideoDisc(disc1);
+        cart.removeDigitalVideoDisc(disc3);
         System.out.println(cart.totalCost());
     }
 }
