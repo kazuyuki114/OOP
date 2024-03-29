@@ -4,6 +4,6 @@ then create a constructor method to build
 a DVD by category. Does JAVA allow you to do this?
 
 Answer:
-- Yes, Java allows us to create multiple constructor methods 
-with different parameter lists, 
-as long as they have unique signatures.
+- No, when we perform this action, Java will display a notification indicating that the method (constructor) 
+has been duplicated, which means that Java has marked it as an error 
+(java: constructor DVD(java.lang.String) is already defined in class DVD) and will prevent the run of program later. 
