@@ -1,20 +1,18 @@
-package hust.soict.globalict.aims.cart;
-
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
-import hust.soict.globalict.aims.store.Store;
+package AimsProject.hust.soict.globalict.aims.cart;
 
 import java.util.ArrayList;
-
+import AimsProject.hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import AimsProject.hust.soict.globalict.aims.store.Store;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20; // Define the maxinum items a user can order
     private ArrayList<DigitalVideoDisc> itemOrdered = new ArrayList<>(); // Array of discs
-    public void addDigitalVideoDisc(DigitalVideoDisc disc, Store store){
-        if (store.itemsInStore.contains(disc)){
-            if (itemOrdered.size() == MAX_NUMBERS_ORDERED){
+
+    public void addDigitalVideoDisc(DigitalVideoDisc disc, Store store) {
+        if (store.itemsInStore.contains(disc)) {
+            if (itemOrdered.size() == MAX_NUMBERS_ORDERED) {
                 System.out.println("The cart is almost full");
-            }
-            else {
+            } else {
                 itemOrdered.add(disc);
                 System.out.println("The disc has been added");
             }
@@ -22,7 +20,8 @@ public class Cart {
             System.out.println("The given disc is invalid");
         }
     }
-    public void removeDigitalVideoDisc(DigitalVideoDisc disc){
+
+    public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
         if (disc != null) {
             if (!itemOrdered.isEmpty()) {
                 if (itemOrdered.contains(disc)) {
@@ -38,9 +37,10 @@ public class Cart {
             System.out.println("The given disc is invalid");
         }
     }
-    public float totalCost(){
+
+    public float totalCost() {
         float totalCost = 0;
-        for (int i = 0; i < itemOrdered.size(); i++){
+        for (int i = 0; i < itemOrdered.size(); i++) {
             if (itemOrdered.get(i) != null) {
                 totalCost += itemOrdered.get(i).getCost();
             }
@@ -48,21 +48,23 @@ public class Cart {
         return totalCost;
     }
 
-    public void printCart(){
+    public void printCart() {
         System.out.println("***********************************Cart***********************************");
         System.out.println("Ordered Items:");
-        for (int i = 0; i < itemOrdered.size(); i++){
+        for (int i = 0; i < itemOrdered.size(); i++) {
             System.out.println(itemOrdered.get(i).toString());
         }
-        System.out.println("Total cost: "+ this.totalCost());
+        System.out.println("Total cost: " + this.totalCost());
         System.out.println("**************************************************************************");
     }
-    public void searchID(int id){
+
+    public void searchID(int id) {
         System.out.println(itemOrdered.get(id).toString());
     }
-    public void searchTitle(String title){
-        for(DigitalVideoDisc item : itemOrdered){
-            if (item.isMatch(title)){
+
+    public void searchTitle(String title) {
+        for (DigitalVideoDisc item : itemOrdered) {
+            if (item.isMatch(title)) {
                 System.out.println(item.toString());
             }
         }

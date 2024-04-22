@@ -1,8 +1,8 @@
-package hust.soict.globalict.test.cart;
+package AimsProject.hust.soict.globalict.test.cart;
 
-import hust.soict.globalict.aims.cart.Cart;
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
-import hust.soict.globalict.aims.store.Store;
+import AimsProject.hust.soict.globalict.aims.cart.Cart;
+import AimsProject.hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import AimsProject.hust.soict.globalict.aims.store.Store;
 
 public class CartTest {
     public static void main(String[] args) {

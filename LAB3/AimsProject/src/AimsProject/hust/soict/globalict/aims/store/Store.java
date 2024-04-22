@@ -1,7 +1,7 @@
-package hust.soict.globalict.aims.store;
+package AimsProject.hust.soict.globalict.aims.store;
 
-import hust.soict.globalict.aims.disc.DigitalVideoDisc;
 import java.util.ArrayList;
+import AimsProject.hust.soict.globalict.aims.disc.DigitalVideoDisc;
 
 public class Store {
     public ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<>();
