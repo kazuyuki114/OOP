@@ -12,5 +12,7 @@ public class DVDTest {
         System.out.println(dvd3);
         DigitalVideoDisc dvd4 = new DigitalVideoDisc(4,"Kazuyuki4","Horror","Kien",3.4f);
         System.out.println(dvd4);
+        dvd1.play();
+        dvd3.play();
     }
 }

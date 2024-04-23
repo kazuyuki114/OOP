@@ -33,32 +33,33 @@ public class CompactDisc extends Disc implements Playable {
     }
     public void addTrack(Track track){
         if (this.tracks.contains(track)){
-            System.out.println("This track exists in the CD");
+            System.out.println("***This track exists in the CD***");
         } else {
             this.tracks.add(track);
-            System.out.println("This track has been added to the tracklist");
+            System.out.println("***This track has been added to the track list***s");
         }
     }
     public void removeTrack(Track track){
         if (this.tracks.contains(track)){
             this.tracks.remove(track);
-            System.out.println("This track has been removed the tracklist");
+            System.out.println("***This track has been removed the track list***");
         } else {
-            System.out.println("This track does not exist in the tracklist");
+            System.out.println("***This track does not exist in the track list***");
         }
     }
     public String toString(){
-        return "CD - [" + this.getId() + "] - [" + this.getTitle() + "] - [" + this.getCategory() + "] - [" + this.getArtist() + "] - [" + this.getLength() + "]:[" + this.getCost() + "]$";
+        return "CD - [" + this.getId() + "] - [" + this.getTitle() + "] - [" + this.getCategory() + "] - [" + this.getArtist() + "] - [" + this.getLength() + "]:[" + this.getCost() + "]$\n" + "Track list: " + this.tracks;
     }
 
     @Override
     public void play() {
         if (!tracks.isEmpty()){
             for(Track track : this.tracks){
+                System.out.print("Track " + (tracks.indexOf(track) + 1) + ": ");
                 track.play();
             }
         } else {
-            System.out.println("No track in the track list");
+            System.out.println("***No track in the track list***");
         }
     }
 }

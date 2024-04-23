@@ -1,39 +1,40 @@
 package AimsProject.hust.soict.globalict.aims.store;
 
 import java.util.ArrayList;
-import AimsProject.hust.soict.globalict.aims.media.disc.DigitalVideoDisc;
+
+import AimsProject.hust.soict.globalict.aims.media.Media;
 
 public class Store {
-    public ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<>();
-    public void addDVD(DigitalVideoDisc disc){
-        if (disc != null){
-            if(!itemsInStore.contains(disc)){
-                itemsInStore.add(disc);
-                System.out.println("The disc has been added to the store");
+    public ArrayList<Media> itemsInStore = new ArrayList<>();
+    public void addMedia(Media item){
+        if (item != null){
+            if(!itemsInStore.contains(item)){
+                itemsInStore.add(item);
+                System.out.println("***The item has been added to the store***");
             } else {
-                System.out.println("The disc exists in the store");
+                System.out.println("***The item exists in the store***");
             }
         } else {
-            System.out.println("The given disc is not available");
+            System.out.println("***The given item is not available***");
         }
     }
-    public void removeDVD(DigitalVideoDisc disc){
-        if (disc != null){
-            if(itemsInStore.contains(disc)){
-                itemsInStore.remove(disc);
-                System.out.println("The disc has been removed from the store");
+    public void removeMedia(Media item){
+        if (item != null){
+            if(itemsInStore.contains(item)){
+                itemsInStore.remove(item);
+                System.out.println("***The item has been removed from the store***");
             } else {
-                System.out.println("The disc does not exist in the store");
+                System.out.println("***The item does not exist in the store***");
             }
         } else {
-            System.out.println("The given disc is not available");
+            System.out.println("***The given item is not available***");
         }
     }
     public void printStore(){
         System.out.println("***********************************Store***********************************");
         System.out.println("Ordered Items:");
-        for (DigitalVideoDisc digitalVideoDisc : itemsInStore) {
-            System.out.println(digitalVideoDisc.toString());
+        for (Media item : itemsInStore) {
+            System.out.println(item.toString());
         }
         System.out.println("***************************************************************************");
     }

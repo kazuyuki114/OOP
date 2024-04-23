@@ -28,18 +28,18 @@ public class Book extends Media {
 
     public void addAuthor(String authorName){
         if (this.authors.contains(authorName)){
-            System.out.println("This author has been already in the author list");
+            System.out.println("***This author's name is already in the author list***");
         } else {
             this.authors.add(authorName);
-            System.out.println("This author has been added to the author list");
+            System.out.println("***This author has been added to the author list***");
         }
     }
     public void removeAuthor(String authorName){
         if (this.authors.contains(authorName)){
             this.authors.remove(authorName);
-            System.out.println("This author has been removed from the author list");
+            System.out.println("***This author has been removed from the author list***");
         } else {
-            System.out.println("This author does not exist in the author list");
+            System.out.println("***This author's name does not exist in the author list***");
         }
     }
     public String toString(){

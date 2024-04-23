@@ -1,0 +1,16 @@
+14.
+- Which classes are aggregates of other classes?
+Checking all constructors of whole classes if they initialize for their parts?
+- Write constructors for parent and child classes. Remove redundant setter methods if any
+
+15.
+When overriding the equals() method of the Object class, you will have to cast the Object
+parameter obj to the type of Object that you are dealing with. For example, in the Media class,
+you must cast the Object obj to a Media, and then check the equality of the two objects’ attributes
+as the above requirements (i.e. title for Media; title and length for Track). If the
+passing object is not an instance of Media, what happens?
+
+Answer: If the passed object is not an instance of Media, the equals() method returns false.
+This indicates that the two objects are not equal,
+as they belong to different classes or incompatible types.
+It will result in a ClassCastException at runtime. This can potentially crash your program.
