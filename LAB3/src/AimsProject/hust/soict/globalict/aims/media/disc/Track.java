@@ -1,6 +1,8 @@
 package AimsProject.hust.soict.globalict.aims.media.disc;
 
-public class Track {
+import AimsProject.hust.soict.globalict.aims.media.Playable;
+
+public class Track implements Playable {
     private String title;
     private int length;
 
@@ -15,5 +17,11 @@ public class Track {
 
     public String getTitle() {
         return title;
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing track: " + this.getTitle());
+        System.out.println("Track length: " + this.getLength());
     }
 }

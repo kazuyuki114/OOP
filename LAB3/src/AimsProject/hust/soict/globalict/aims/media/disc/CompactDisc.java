@@ -1,8 +1,10 @@
 package AimsProject.hust.soict.globalict.aims.media.disc;
 
+import AimsProject.hust.soict.globalict.aims.media.Playable;
+
 import java.util.ArrayList;
 
-public class CompactDisc extends Disc{
+public class CompactDisc extends Disc implements Playable {
     private String artist;
     private ArrayList<Track> tracks = new ArrayList<>();
     // Contructors
@@ -47,5 +49,16 @@ public class CompactDisc extends Disc{
     }
     public String toString(){
         return "CD - [" + this.getId() + "] - [" + this.getTitle() + "] - [" + this.getCategory() + "] - [" + this.getArtist() + "] - [" + this.getLength() + "]:[" + this.getCost() + "]$";
+    }
+
+    @Override
+    public void play() {
+        if (!tracks.isEmpty()){
+            for(Track track : this.tracks){
+                track.play();
+            }
+        } else {
+            System.out.println("No track in the track list");
+        }
     }
 }

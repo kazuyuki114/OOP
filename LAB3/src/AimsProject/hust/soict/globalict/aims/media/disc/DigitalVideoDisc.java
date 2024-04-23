@@ -1,6 +1,8 @@
 package AimsProject.hust.soict.globalict.aims.media.disc;
 
-public class DigitalVideoDisc extends Disc {
+import AimsProject.hust.soict.globalict.aims.media.Playable;
+
+public class DigitalVideoDisc extends Disc implements Playable {
 
 
     public DigitalVideoDisc(int id, String title) {
@@ -26,6 +28,12 @@ public class DigitalVideoDisc extends Disc {
     // isMatch method
     public boolean isMatch(String title){
         return this.getTitle().equals(title);
+    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
 }
 
