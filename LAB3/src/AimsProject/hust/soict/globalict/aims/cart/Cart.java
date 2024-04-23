@@ -59,14 +59,25 @@ public class Cart {
     }
 
     public void searchID(int id) {
-        System.out.println(itemOrdered.get(id).toString());
+        if (id > 0 && id < itemOrdered.size()) {
+            System.out.println(itemOrdered.get(id).toString());
+        } else {
+            System.out.println("The id is not valid");
+        }
     }
 
     public void searchTitle(String title) {
+        int count = 0;
         for (DigitalVideoDisc item : itemOrdered) {
             if (item.isMatch(title)) {
+                count++;
                 System.out.println(item.toString());
             }
+        }
+        if (count == 0){
+            System.out.println("No matching DVDs found in the cart");
+        } else {
+            System.out.println("There're " + count + " DVDs found in the cart");
         }
     }
 }

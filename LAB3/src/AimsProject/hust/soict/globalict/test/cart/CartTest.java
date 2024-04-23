@@ -19,8 +19,8 @@ public class CartTest {
         cart.addDigitalVideoDisc(disc1, store);
         cart.addDigitalVideoDisc(disc2, store);
         cart.addDigitalVideoDisc(disc3, store);
+        cart.removeDigitalVideoDisc(disc3);
         cart.printCart();
-        cart.searchID(2);
         cart.searchTitle("The Lion King");
     }
 }
