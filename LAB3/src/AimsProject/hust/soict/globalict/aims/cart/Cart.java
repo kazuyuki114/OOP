@@ -1,7 +1,7 @@
 package AimsProject.hust.soict.globalict.aims.cart;
 
 import java.util.ArrayList;
-import AimsProject.hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import AimsProject.hust.soict.globalict.aims.media.disc.DigitalVideoDisc;
 import AimsProject.hust.soict.globalict.aims.store.Store;
 
 public class Cart {
@@ -40,9 +40,9 @@ public class Cart {
 
     public float totalCost() {
         float totalCost = 0;
-        for (int i = 0; i < itemOrdered.size(); i++) {
-            if (itemOrdered.get(i) != null) {
-                totalCost += itemOrdered.get(i).getCost();
+        for (DigitalVideoDisc digitalVideoDisc : itemOrdered) {
+            if (digitalVideoDisc != null) {
+                totalCost += digitalVideoDisc.getCost();
             }
         }
         return totalCost;
@@ -51,8 +51,8 @@ public class Cart {
     public void printCart() {
         System.out.println("***********************************Cart***********************************");
         System.out.println("Ordered Items:");
-        for (int i = 0; i < itemOrdered.size(); i++) {
-            System.out.println(itemOrdered.get(i).toString());
+        for (DigitalVideoDisc digitalVideoDisc : itemOrdered) {
+            System.out.println(digitalVideoDisc.toString());
         }
         System.out.println("Total cost: " + this.totalCost());
         System.out.println("**************************************************************************");

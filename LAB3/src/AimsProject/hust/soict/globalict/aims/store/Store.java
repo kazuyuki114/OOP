@@ -1,7 +1,7 @@
 package AimsProject.hust.soict.globalict.aims.store;
 
 import java.util.ArrayList;
-import AimsProject.hust.soict.globalict.aims.disc.DigitalVideoDisc;
+import AimsProject.hust.soict.globalict.aims.media.disc.DigitalVideoDisc;
 
 public class Store {
     public ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<>();
@@ -32,8 +32,8 @@ public class Store {
     public void printStore(){
         System.out.println("***********************************Store***********************************");
         System.out.println("Ordered Items:");
-        for (int i = 0; i < itemsInStore.size(); i++){
-            System.out.println(itemsInStore.get(i).toString());
+        for (DigitalVideoDisc digitalVideoDisc : itemsInStore) {
+            System.out.println(digitalVideoDisc.toString());
         }
         System.out.println("***************************************************************************");
     }
