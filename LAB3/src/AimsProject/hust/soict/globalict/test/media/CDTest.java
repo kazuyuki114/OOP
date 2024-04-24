@@ -12,8 +12,11 @@ public class CDTest {
         compactDisc = new CompactDisc(2,"Kazuyuki","Jazz","Kien",3.4f);
         Track track1 = new Track("Rick roll", 10);
         Track track2 = new Track("Lemon Tree",11);
+        Track track3 = new Track("Lemon Tree", 11);
         compactDisc.addTrack(track1);
         compactDisc.addTrack(track2);
+        compactDisc.addTrack(track3);
+        System.out.println(track2.equals(track3));
         //compactDisc.removeTrack(track1);
         //compactDisc.removeTrack(track1);
         System.out.println(compactDisc);

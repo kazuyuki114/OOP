@@ -25,8 +25,9 @@ public class CartTest {
         cart.addMedia(disc2, store);
         cart.addMedia(disc3, store);
         cart.addMedia(book1, store);
-        cart.searchTitle("The Lion King");
-        cart.searchID(1);
+        cart.addMedia(book1, store);
+        System.out.println(cart.searchTitle("The Lion King"));
+        System.out.println(cart.searchID(1));
         cart.sortByTitle();
         cart.printCart();
         cart.sortByCost();

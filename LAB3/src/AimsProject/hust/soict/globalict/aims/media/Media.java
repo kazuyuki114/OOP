@@ -46,4 +46,18 @@ public abstract class Media {
     public boolean isMatch(String title){
         return this.getTitle().equals(title);
     }
+    // equals method
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj){
+            return true;
+        }
+        if (obj == null){
+            return false;
+        }
+        Media other = (Media) obj;
+        if (this.getTitle() == null){
+            return other.getTitle() == null;
+        } else return title.equals(other.title);
+    }
 }

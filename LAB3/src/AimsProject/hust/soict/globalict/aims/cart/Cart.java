@@ -15,8 +15,12 @@ public class Cart {
             if (itemOrdered.size() == MAX_NUMBERS_ORDERED) {
                 System.out.println("***The cart is almost full***");
             } else {
-                itemOrdered.add(item);
-                System.out.println("***The disc has been added***");
+                if (!this.itemOrdered.contains(item)) {
+                    itemOrdered.add(item);
+                    System.out.println("***The disc has been added***");
+                } else {
+                    System.out.println("***The given item exists in the cart***");
+                }
             }
         } else {
             System.out.println("***The given disc is unavailable***");
@@ -56,33 +60,33 @@ public class Cart {
         System.out.println("**************************************************************************");
     }
 
-    public void searchID(int id) {
+    public Media searchID(int id) {
         if (id > 0 && id < itemOrdered.size()) {
-            System.out.println(itemOrdered.get(id));
+            return itemOrdered.get(id);
         } else {
-            System.out.println("***The id is not valid***");
+            return null;
         }
     }
 
-    public void searchTitle(String title) {
-        int count = 0;
+    public Media searchTitle(String title) {
         for (Media item : itemOrdered) {
             if (item.isMatch(title)) {
-                count++;
-                System.out.println(item);
+                return item;
             }
         }
-        if (count == 0){
-            System.out.println("***No matching DVDs found in the cart***");
-        } else {
-            System.out.println("***There're " + count + " DVDs found in the cart***");
-        }
+        return null;
     }
     public void sortByTitle(){
         Collections.sort(itemOrdered, Media.COMPARE_BY_TITLE_COST);
     }
     public void sortByCost(){
         Collections.sort(itemOrdered, Media.COMPARE_BY_COST_TITLE);
+    }
+    public void clearItems(){
+        this.itemOrdered.clear();
+    }
+    public int getSize(){
+        return this.itemOrdered.size();
     }
 }
 

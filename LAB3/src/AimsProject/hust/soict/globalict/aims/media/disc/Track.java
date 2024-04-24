@@ -28,7 +28,31 @@ public class Track implements Playable {
             System.out.println("***Can not play this track***");
         }
     }
+    // toString method
     public String toString(){
         return "[ "+ this.getTitle() + ", " + this.getLength() + " ]";
+    }
+    // equals method
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Track other = (Track) obj;
+        if (this.getTitle() == null){
+            if(other.title != null){
+                return false;
+            }
+        } else if (!title.equals(other.title)){
+            return false;
+        }
+        return length == other.getLength();
     }
 }
