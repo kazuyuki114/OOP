@@ -61,11 +61,12 @@ public class Cart {
     }
 
     public Media searchID(int id) {
-        if (id > 0 && id < itemOrdered.size()) {
-            return itemOrdered.get(id);
-        } else {
-            return null;
+        for (Media m : itemOrdered){
+            if (m.getId() == id){
+                return m;
+            }
         }
+        return null;
     }
 
     public Media searchTitle(String title) {

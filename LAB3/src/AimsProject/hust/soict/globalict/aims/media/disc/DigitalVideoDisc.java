@@ -4,7 +4,6 @@ import AimsProject.hust.soict.globalict.aims.media.Playable;
 
 public class DigitalVideoDisc extends Disc implements Playable {
 
-
     public DigitalVideoDisc(int id, String title) {
         super(id, title);
     }

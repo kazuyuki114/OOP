@@ -5,6 +5,7 @@ import AimsProject.hust.soict.globalict.aims.media.Media;
 import AimsProject.hust.soict.globalict.aims.media.book.Book;
 import AimsProject.hust.soict.globalict.aims.media.disc.CompactDisc;
 import AimsProject.hust.soict.globalict.aims.media.disc.DigitalVideoDisc;
+import AimsProject.hust.soict.globalict.aims.media.disc.Track;
 import AimsProject.hust.soict.globalict.aims.store.Store;
 import java.util.Random;
 import java.util.Scanner;
@@ -118,27 +119,45 @@ public class Aims {
                                 }
                                 break;
                             case 4:
+                                int cartChoice = -1;
                                 cart.printCart();
-                                int cartChoice;
                                 do {
                                     cartMenu();
-                                    cartChoice = scanner.nextInt();
-                                    scanner.nextLine();
+                                    try {
+                                        cartChoice = scanner.nextInt();
+                                        scanner.nextLine();
+                                    } catch (Exception e){
+                                        scanner.nextLine();
+                                    }
                                     switch (cartChoice){
                                         case 1:
+                                            cart.printCart();
                                             System.out.print("Enter choice (ID/Title): ");
                                             String filterChoice = scanner.nextLine();
                                             switch (filterChoice){
                                                 case "ID":
-                                                    System.out.print("Enter id: ");
-                                                    int id = scanner.nextInt();
-                                                    scanner.nextLine();
-                                                    cart.searchID(id);
+                                                    int id = -1;
+                                                     try {
+                                                         System.out.print("Enter id: ");
+                                                         id = scanner.nextInt();
+                                                         scanner.nextLine();
+                                                     } catch (Exception e){
+                                                         scanner.nextLine();
+                                                     }
+                                                    if (cart.searchID(id) != null){
+                                                        System.out.println(cart.searchID(id));
+                                                    } else {
+                                                        System.out.println("Cannot filter the given id");
+                                                    }
                                                     break;
                                                 case "Title":
                                                     System.out.print("Enter title: ");
                                                     String searchTitle = scanner.nextLine();
-                                                    cart.searchTitle(searchTitle);
+                                                    if (cart.searchTitle(searchTitle) != null){
+                                                        System.out.println(cart.searchTitle(searchTitle));
+                                                    } else {
+                                                        System.out.println("Cannot filter the given title");
+                                                    }
                                                     break;
                                                 default:
                                                     System.out.println("Invalid Choice");
@@ -173,7 +192,7 @@ public class Aims {
                                             }
                                             break;
                                         case 4:
-                                            store.printStore();
+                                            cart.printCart();
                                             String playTitle;
                                             System.out.print("Enter the title of the media: ");
                                             playTitle = scanner.nextLine();
@@ -233,25 +252,92 @@ public class Aims {
                                 System.out.println("--------------------------------");
                                 System.out.println("Category: ");
                                 String category = scanner.nextLine();
-                                System.out.println("Cost: ");
-                                float cost = scanner.nextFloat();
+                                float cost = -1.0f;
+                                do {
+                                    try {
+                                        System.out.println("Cost: ");
+                                        cost = scanner.nextFloat();
+                                        scanner.nextLine();
+                                    } catch (Exception e){
+                                        scanner.nextLine();
+                                    }
+                                } while (cost < 0);
                                 int id = rand.nextInt(1000);
                                 String typeChoice = "";
                                 while (!typeChoice.equals("DVD") && !typeChoice.equals("CD") && !typeChoice.equals("Book")){
-                                    System.out.print("Enter your choice (Add/Remove): ");
+                                    System.out.print("Enter your choice (CD/DVD/Book): ");
                                     typeChoice = scanner.nextLine();
                                 }
                                 switch (typeChoice){
                                     case "DVD":
-                                        DigitalVideoDisc dvd = new DigitalVideoDisc(id,addTitle,category,cost);
+                                        String directorDVDName;
+                                        System.out.print("Enter the director's name: ");
+                                        directorDVDName = scanner.nextLine();
+                                        int lengthDVD = -1;
+                                        do{
+                                            try {
+                                                System.out.print("Enter the length: ");
+                                                lengthDVD = scanner.nextInt();
+                                                scanner.nextLine();
+                                            } catch (Exception e){
+                                                scanner.nextLine();
+                                            }
+                                        } while (lengthDVD < 0);
+                                        DigitalVideoDisc dvd = new DigitalVideoDisc(id,addTitle,category,directorDVDName,lengthDVD,cost);
                                         store.addMedia(dvd);
                                         break;
                                     case "CD":
-                                        CompactDisc cd = new CompactDisc(id,addTitle,category,cost);
+                                        String artistCDName;
+                                        System.out.print("Enter the artist's name: ");
+                                        artistCDName = scanner.nextLine();
+                                        CompactDisc cd = new CompactDisc(id,addTitle,category,artistCDName, cost);
+                                        int numOfTracks = 0;
+                                        do {
+                                            try {
+                                                System.out.print("Enter the number of tracks: ");
+                                                numOfTracks = scanner.nextInt();
+                                                scanner.nextLine();
+                                            } catch (Exception e){
+                                                System.out.println("Invalid Integer");
+                                            }
+                                        } while(numOfTracks < 0);
+                                        String trackTitle;
+                                        for (int i = 1; i <= numOfTracks; i++){
+                                            System.out.print("Enter title: ");
+                                            trackTitle = scanner.nextLine();
+                                            int trackLength = -1;
+                                            do{
+                                                try {
+                                                    System.out.print("Enter length: ");
+                                                    trackLength = scanner.nextInt();
+                                                    scanner.nextLine();
+                                                } catch (Exception e){
+                                                    scanner.nextLine();
+                                                }
+                                            }while (trackLength < 0);
+                                            Track track = new Track(trackTitle, trackLength);
+                                            cd.addTrack(track);
+                                        }
                                         store.addMedia(cd);
                                         break;
                                     case "Book":
                                         Book book = new Book(id,addTitle,category,cost);
+                                        int numOfAuthors = -1;
+                                        String authorName;
+                                        do {
+                                            try {
+                                                System.out.print("Enter the number of authors: ");
+                                                numOfAuthors = scanner.nextInt();
+                                                scanner.nextLine();
+                                            } catch (Exception e){
+                                                scanner.nextLine();
+                                            }
+                                        } while(numOfAuthors < 0);
+                                        for (int i= 1; i <= numOfAuthors; i++){
+                                            System.out.print("Enter author's name: ");
+                                            authorName = scanner.nextLine();
+                                            book.addAuthor(authorName);
+                                        }
                                         store.addMedia(book);
                                         break;
                                 }
@@ -274,14 +360,19 @@ public class Aims {
                     }
                     break;
                 case 3:
-                    cart.printCart();
-                    int cartChoice;
+                    int cartChoice = -1;
                     do {
+                        cart.printCart();
                         cartMenu();
-                        cartChoice = scanner.nextInt();
-                        scanner.nextLine();
+                        try {
+                            cartChoice = scanner.nextInt();
+                            scanner.nextLine();
+                        } catch (Exception e){
+                            scanner.nextLine();
+                        }
                         switch (cartChoice){
                             case 1:
+                                cart.printCart();
                                 System.out.print("Enter choice (ID/Title): ");
                                 String filterChoice = scanner.nextLine();
                                 switch (filterChoice){
@@ -289,12 +380,20 @@ public class Aims {
                                         System.out.print("Enter id: ");
                                         int id = scanner.nextInt();
                                         scanner.nextLine();
-                                        cart.searchID(id);
+                                        if (cart.searchID(id) != null){
+                                            System.out.println(cart.searchID(id));
+                                        } else {
+                                            System.out.println("Cannot filter the given id");
+                                        }
                                         break;
                                     case "Title":
                                         System.out.print("Enter title: ");
                                         String searchTitle = scanner.nextLine();
-                                        cart.searchTitle(searchTitle);
+                                        if (cart.searchTitle(searchTitle) != null){
+                                            System.out.println(cart.searchTitle(searchTitle));
+                                        } else {
+                                            System.out.println("Cannot filter the given title");
+                                        }
                                         break;
                                     default:
                                         System.out.println("Invalid Choice");
@@ -329,7 +428,7 @@ public class Aims {
                                 }
                                 break;
                             case 4:
-                                store.printStore();
+                                cart.printCart();
                                 String playTitle;
                                 System.out.print("Enter the title of the media: ");
                                 playTitle = scanner.nextLine();
