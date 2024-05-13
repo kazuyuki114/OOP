@@ -5,7 +5,7 @@ import AimsProject.hust.soict.globalict.aims.media.Media;
 import java.util.ArrayList;
 
 public class Book extends Media {
-  private ArrayList<String> authors = new ArrayList<>();
+  private final ArrayList<String> authors = new ArrayList<>();
 
   public Book(int id, String title) {
     this.setId(id);

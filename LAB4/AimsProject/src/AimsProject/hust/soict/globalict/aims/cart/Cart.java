@@ -8,7 +8,7 @@ import AimsProject.hust.soict.globalict.aims.store.Store;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20; // Define the maxinum items a user can order
-    private ArrayList<Media> itemOrdered = new ArrayList<>(); // Array of discs
+    private final ArrayList<Media> itemOrdered = new ArrayList<>(); // Array of discs
 
     public void addMedia(Media item, Store store) {
         if (store.itemsInStore.contains(item)) {

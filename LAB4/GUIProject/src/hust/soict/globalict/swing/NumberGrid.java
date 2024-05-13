@@ -16,7 +16,7 @@ public class NumberGrid extends JFrame {
         textField.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         textField.setFont(new Font("JetBrains Mono",Font.PLAIN, 30));
         textField.setEditable(false);
-        JPanel buttonsPanel = new JPanel(new GridLayout(4,3));
+        JPanel buttonsPanel = new JPanel(new GridLayout(4,3,10,10));
         addButtons(buttonsPanel);
 
         Container cp = getContentPane();

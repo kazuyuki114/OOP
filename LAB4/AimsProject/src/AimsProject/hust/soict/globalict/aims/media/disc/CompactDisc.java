@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable {
     private String artist;
-    private ArrayList<Track> tracks = new ArrayList<>();
+    private final ArrayList<Track> tracks = new ArrayList<>();
     // Contructors
     public CompactDisc(int id, String title) {
         super(id, title);
@@ -21,6 +21,9 @@ public class CompactDisc extends Disc implements Playable {
         this.artist = artist;
     }
     // Getter
+    public ArrayList<Track> getTracks() {
+        return tracks;
+    }
     public String getArtist() {
         return artist;
     }
@@ -62,4 +65,5 @@ public class CompactDisc extends Disc implements Playable {
             System.out.println("***No track in the track list***");
         }
     }
+
 }
