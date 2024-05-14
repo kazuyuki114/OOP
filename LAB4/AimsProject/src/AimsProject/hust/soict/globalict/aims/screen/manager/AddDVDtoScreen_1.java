@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddDVDtoScreen extends JFrame implements ActionListener {
+public class AddDVDtoScreen_1 extends JFrame implements ActionListener {
     private final Store store;
     private final JTextField idTF;
     private final JTextField costTF;
@@ -18,60 +18,83 @@ public class AddDVDtoScreen extends JFrame implements ActionListener {
     private final JTextField lengthTF;
     private final JButton addDVD;
 
-    public AddDVDtoScreen(Store store){
+    public AddDVDtoScreen_1(Store store) {
         this.store = store; // Initialize the store object
-        setLayout(new FlowLayout());
-        setSize(350,300);
+        setLayout(new GridBagLayout());
+        setSize(400, 350);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        JPanel idPanel = new JPanel();
-        idPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        idPanel.add(new JLabel("ID: "));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0;
+        add(new JLabel("ID: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         idTF = new JTextField(20);
-        idPanel.add(idTF);
+        add(idTF, gbc);
 
-        JPanel titlePanel = new JPanel();
-        titlePanel.setLayout(new FlowLayout());
-        titlePanel.add(new JLabel("Title: "));
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0;
+        add(new JLabel("Title: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         titleTF = new JTextField(20);
-        titlePanel.add(titleTF);
+        add(titleTF, gbc);
 
-        JPanel categoryPanel = new JPanel();
-        categoryPanel.setLayout(new FlowLayout());
-        categoryPanel.add(new JLabel("Category: "));
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 0;
+        add(new JLabel("Category: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         categoryTF = new JTextField(20);
-        categoryPanel.add(categoryTF);
+        add(categoryTF, gbc);
 
-        JPanel costPanel = new JPanel();
-        costPanel.setLayout(new FlowLayout());
-        costPanel.add(new JLabel("Cost: "));
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0;
+        add(new JLabel("Cost: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         costTF = new JTextField(20);
-        costPanel.add(costTF);
+        add(costTF, gbc);
 
-        JPanel directorPanel = new JPanel();
-        directorPanel.setLayout(new FlowLayout());
-        directorPanel.add(new JLabel("Director "));
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.weightx = 0;
+        add(new JLabel("Director: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         directorTF = new JTextField(20);
-        directorPanel.add(directorTF);
+        add(directorTF, gbc);
 
-        JPanel lengthPanel = new JPanel();
-        lengthPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        lengthPanel.add(new JLabel("Length: "));
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.weightx = 0;
+        add(new JLabel("Length: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         lengthTF = new JTextField(20);
-        lengthPanel.add(lengthTF);
+        add(lengthTF, gbc);
 
-        JPanel addButtonPanel = new JPanel();
-        addButtonPanel.setLayout(new BorderLayout());
+        gbc.gridx = 0;
+        gbc.gridy = 6;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
         addDVD = new JButton("ADD DVD");
         addDVD.addActionListener(this);
-        addButtonPanel.add(addDVD, BorderLayout.CENTER);
+        add(addDVD, gbc);
 
-        add(idPanel);
-        add(titlePanel);
-        add(categoryPanel);
-        add(costPanel);
-        add(directorPanel);
-        add(lengthPanel);
-        add(addButtonPanel);
         setTitle("ADD DVD TO THE STORE");
         setResizable(false);
         setLocationRelativeTo(null);
@@ -80,7 +103,7 @@ public class AddDVDtoScreen extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == addDVD){
+        if (e.getSource() == addDVD) {
             try {
                 int id = Integer.parseInt(idTF.getText());
                 String title = titleTF.getText();
@@ -96,5 +119,4 @@ public class AddDVDtoScreen extends JFrame implements ActionListener {
             }
         }
     }
-
 }

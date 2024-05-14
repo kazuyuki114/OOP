@@ -4,10 +4,7 @@ import AimsProject.hust.soict.globalict.aims.media.Media;
 import AimsProject.hust.soict.globalict.aims.media.book.Book;
 import AimsProject.hust.soict.globalict.aims.media.disc.CompactDisc;
 import AimsProject.hust.soict.globalict.aims.media.disc.DigitalVideoDisc;
-import AimsProject.hust.soict.globalict.aims.screen.manager.AddBooktoScreen;
-import AimsProject.hust.soict.globalict.aims.screen.manager.AddCDtoScreen;
-import AimsProject.hust.soict.globalict.aims.screen.manager.AddDVDtoScreen;
-import AimsProject.hust.soict.globalict.aims.screen.manager.MediaStore;
+import AimsProject.hust.soict.globalict.aims.screen.manager.*;
 import AimsProject.hust.soict.globalict.aims.store.Store;
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class StoreManagerScreen extends JFrame{
-    private Store store;
+    private final Store store;
 
     JMenuBar createMenuBar(){
         JMenu menu = new JMenu("Option");
@@ -26,7 +23,7 @@ public class StoreManagerScreen extends JFrame{
         addBook.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddBooktoScreen(store);
+                new AddBooktoScreen_1(store);
             }
         });
         smUpdateStore.add(addBook);
@@ -35,7 +32,7 @@ public class StoreManagerScreen extends JFrame{
         addDVD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddDVDtoScreen(store);
+                new AddDVDtoScreen_1(store);
             }
         });
         smUpdateStore.add(addDVD);
@@ -44,7 +41,7 @@ public class StoreManagerScreen extends JFrame{
         addCD.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddCDtoScreen(store);
+                new AddCDtoScreen_1(store);
             }
         });
         smUpdateStore.add(addCD);
@@ -91,16 +88,7 @@ public class StoreManagerScreen extends JFrame{
         return center;
 
     }
-    public StoreManagerScreen(){
-        Container cp = getContentPane();
-        cp.setLayout(new BorderLayout());
-        cp.add(createNorth(),BorderLayout.NORTH);
-        //cp.add(createCenter());
-        setTitle("Store");
-        setSize(1280,720);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
+
     public StoreManagerScreen(Store store){
         this.store = store;
 

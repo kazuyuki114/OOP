@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddBooktoScreen extends JFrame  implements ActionListener {
+public class AddBooktoScreen_1 extends JFrame implements ActionListener {
     private final JButton addBook;
     private final JButton addAuthor;
     private Book book;
@@ -18,56 +18,79 @@ public class AddBooktoScreen extends JFrame  implements ActionListener {
     private final JTextField categoryTF;
     private final JTextField authorTF;
 
-    public AddBooktoScreen(Store store){
-        this.store = store; // Initialize the store object
-        setLayout(new FlowLayout());
-        setSize(350,300);
+    public AddBooktoScreen_1(Store store) {
+        this.store = store;
+        setLayout(new GridBagLayout());
+        setSize(400, 300);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        JPanel idPanel = new JPanel();
-        idPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        idPanel.add(new JLabel("ID: "));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0;
+        add(new JLabel("ID: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         idTF = new JTextField(20);
-        idPanel.add(idTF);
+        add(idTF, gbc);
 
-        JPanel titlePanel = new JPanel();
-        titlePanel.setLayout(new FlowLayout());
-        titlePanel.add(new JLabel("Title: "));
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.weightx = 0;
+        add(new JLabel("Title: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         titleTF = new JTextField(20);
-        titlePanel.add(titleTF);
+        add(titleTF, gbc);
 
-        JPanel categoryPanel = new JPanel();
-        categoryPanel.setLayout(new FlowLayout());
-        categoryPanel.add(new JLabel("Category: "));
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.weightx = 0;
+        add(new JLabel("Category: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         categoryTF = new JTextField(20);
-        categoryPanel.add(categoryTF);
+        add(categoryTF, gbc);
 
-        JPanel costPanel = new JPanel();
-        costPanel.setLayout(new FlowLayout());
-        costPanel.add(new JLabel("Cost: "));
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.weightx = 0;
+        add(new JLabel("Cost: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         costTF = new JTextField(20);
-        costPanel.add(costTF);
+        add(costTF, gbc);
 
-        JPanel authorPanel = new JPanel();
-        authorPanel.setLayout(new FlowLayout());
-        authorPanel.add(new JLabel("Author: "));
+        gbc.gridx = 0;
+        gbc.gridy = 4;
+        gbc.weightx = 0;
+        add(new JLabel("Author: "), gbc);
+
+        gbc.gridx = 1;
+        gbc.weightx = 1;
         authorTF = new JTextField(15);
-        authorPanel.add(authorTF);
+        add(authorTF, gbc);
+
+        gbc.gridx = 2;
+        gbc.weightx = 0;
         addAuthor = new JButton("ADD");
         addAuthor.addActionListener(this);
-        authorPanel.add(addAuthor);
+        add(addAuthor, gbc);
 
-        JPanel addButtonPanel = new JPanel();
-        addButtonPanel.setLayout(new BorderLayout());
+        gbc.gridx = 0;
+        gbc.gridy = 5;
+        gbc.gridwidth = 2;
+        gbc.weightx = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
         addBook = new JButton("ADD BOOK");
         addBook.addActionListener(this);
-        addButtonPanel.add(addBook, BorderLayout.CENTER);
-
-        add(idPanel);
-        add(titlePanel);
-        add(categoryPanel);
-        add(costPanel);
-        add(authorPanel);
-        add(addButtonPanel);
+        add(addBook, gbc);
+        setBackground(Color.lightGray);
         setTitle("ADD BOOK TO THE STORE");
         setResizable(false);
         setLocationRelativeTo(null);

@@ -26,12 +26,11 @@ public class MediaStore extends JPanel implements ActionListener {
 
         JPanel container = new JPanel();
         container.setLayout(new FlowLayout(FlowLayout.CENTER));
-
+        container.setBackground(Color.decode("#f9f4ef"));
+        container.setForeground(Color.decode("#716040"));
         if(media instanceof Playable){
             playButton = new JButton("Play");
             container.add(playButton);
-            container.setBackground(Color.decode("#f9f4ef"));
-            container.setForeground(Color.decode("#716040"));
             playButton.setBackground(Color.decode("#8c7851"));
             playButton.setForeground(Color.decode("#fffffe"));
             playButton.addActionListener(this);

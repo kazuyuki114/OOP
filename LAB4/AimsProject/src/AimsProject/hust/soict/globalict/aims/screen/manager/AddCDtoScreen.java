@@ -24,7 +24,7 @@ public class AddCDtoScreen extends JFrame implements ActionListener {
     public AddCDtoScreen(Store store){
         this.store = store; // Initialize the store object
         setLayout(new FlowLayout());
-        setSize(350,500);
+        setSize(350,300);
 
         JPanel idPanel = new JPanel();
         idPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
