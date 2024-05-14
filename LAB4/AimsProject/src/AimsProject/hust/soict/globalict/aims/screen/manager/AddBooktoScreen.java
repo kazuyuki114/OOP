@@ -1,23 +1,22 @@
 package AimsProject.hust.soict.globalict.aims.screen.manager;
 
-import AimsProject.hust.soict.globalict.aims.media.disc.DigitalVideoDisc;
+import AimsProject.hust.soict.globalict.aims.media.book.Book;
 import AimsProject.hust.soict.globalict.aims.store.Store;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AddBooktoScreen extends JFrame  implements ActionListener {
-    private final JButton addDVD;
-    private DigitalVideoDisc dvd;
+    private final JButton addBook;
+    private final JButton addAuthor;
+    private Book book;
     private final Store store;
     private final JTextField idTF;
     private final JTextField costTF;
     private final JTextField titleTF;
     private final JTextField categoryTF;
-    private final JTextField directorTF;
-    private final JTextField lengthTF;
+    private final JTextField authorTF;
 
     public AddBooktoScreen(Store store){
         this.store = store; // Initialize the store object
@@ -48,31 +47,27 @@ public class AddBooktoScreen extends JFrame  implements ActionListener {
         costTF = new JTextField(20);
         costPanel.add(costTF);
 
-        JPanel directorPanel = new JPanel();
-        directorPanel.setLayout(new FlowLayout());
-        directorPanel.add(new JLabel("Author: "));
-        directorTF = new JTextField(15);
-        directorPanel.add(directorTF);
-
-        JPanel lengthPanel = new JPanel();
-        lengthPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        lengthPanel.add(new JLabel("Length: "));
-        lengthTF = new JTextField(20);
-        lengthPanel.add(lengthTF);
+        JPanel authorPanel = new JPanel();
+        authorPanel.setLayout(new FlowLayout());
+        authorPanel.add(new JLabel("Author: "));
+        authorTF = new JTextField(15);
+        authorPanel.add(authorTF);
+        addAuthor = new JButton("ADD");
+        addAuthor.addActionListener(this);
+        authorPanel.add(addAuthor);
 
         JPanel addButtonPanel = new JPanel();
         addButtonPanel.setLayout(new BorderLayout());
-        addDVD = new JButton("ADD DVD");
-        addDVD.addActionListener(this);
-        addButtonPanel.add(addDVD, BorderLayout.CENTER);
+        addBook = new JButton("ADD BOOK");
+        addBook.addActionListener(this);
+        addButtonPanel.add(addBook, BorderLayout.CENTER);
 
 
         add(idPanel);
         add(titlePanel);
         add(categoryPanel);
         add(costPanel);
-        add(directorPanel);
-        add(lengthPanel);
+        add(authorPanel);
         add(addButtonPanel);
         setTitle("ADD BOOK TO THE STORE");
         setResizable(false);
@@ -82,19 +77,25 @@ public class AddBooktoScreen extends JFrame  implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == addDVD){
+        if(e.getSource() == addBook){
             try {
                 int id = Integer.parseInt(idTF.getText());
                 String title = titleTF.getText();
                 String category = categoryTF.getText();
                 float cost = Float.parseFloat(costTF.getText());
-                String director = directorTF.getText();
-                int length = Integer.parseInt(lengthTF.getText());
-                dvd = new DigitalVideoDisc(id,title,category,director,length, cost);
-                System.out.println(dvd);
-                store.addMedia(dvd);
+                book = new Book(id,title,category,cost);
+                System.out.println(book);
+                store.addMedia(book);
+                store.printStore();
             } catch (NumberFormatException exception) {
                 JOptionPane.showMessageDialog(null, "Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        if (e.getSource() == addAuthor){
+            if(book != null) {
+                String author = authorTF.getText();
+                book.addAuthor(author);
+                System.out.println(book);
             }
         }
     }

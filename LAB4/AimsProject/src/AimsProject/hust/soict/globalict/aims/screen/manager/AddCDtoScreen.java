@@ -52,19 +52,19 @@ public class AddCDtoScreen extends JFrame implements ActionListener {
 
         JPanel artistPanel = new JPanel();
         artistPanel.setLayout(new FlowLayout());
-        artistPanel.add(new JLabel("Category: "));
+        artistPanel.add(new JLabel("Artist: "));
         artistTF = new JTextField(20);
         artistPanel.add(artistTF);
 
         JPanel trackPanel = new JPanel();
         trackPanel.setLayout(new FlowLayout());
         trackPanel.add(new JLabel("Title: "));
-        trackTitleTF = new JTextField(10);
+        trackTitleTF = new JTextField(6);
+        trackPanel.add(trackTitleTF);
         trackPanel.add(new JLabel("Length: "));
-        trackLengthTF = new JTextField(10);
+        trackLengthTF = new JTextField(6);
         addTrack = new JButton("ADD");
         addTrack.addActionListener(this);
-        trackPanel.add(trackTitleTF);
         trackPanel.add(trackLengthTF);
         trackPanel.add(addTrack);
 
@@ -79,9 +79,10 @@ public class AddCDtoScreen extends JFrame implements ActionListener {
         add(titlePanel);
         add(categoryPanel);
         add(costPanel);
+        add(artistPanel);
         add(trackPanel);
         add(addButtonPanel);
-        setTitle("ADD DVD TO THE STORE");
+        setTitle("ADD CD TO THE STORE");
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -95,6 +96,7 @@ public class AddCDtoScreen extends JFrame implements ActionListener {
                     int length = Integer.parseInt(trackLengthTF.getText());
                     Track track = new Track(title, length);
                     cd.addTrack(track);
+                    cd.play();
                 } catch (NumberFormatException exception){
                     JOptionPane.showMessageDialog(null, "Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
@@ -107,8 +109,9 @@ public class AddCDtoScreen extends JFrame implements ActionListener {
                 String category = categoryTF.getText();
                 float cost = Float.parseFloat(costTF.getText());
                 String artist = artistTF.getText();
-                CompactDisc cd = new CompactDisc(id,title,category,artist,cost);
+                cd = new CompactDisc(id,title,category,artist,cost);
                 store.addMedia(cd);
+                store.printStore();
             } catch (NumberFormatException exception) {
                 JOptionPane.showMessageDialog(null, "Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
             }

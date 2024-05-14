@@ -50,15 +50,15 @@ public class AddDVDtoScreen extends JFrame implements ActionListener {
 
         JPanel directorPanel = new JPanel();
         directorPanel.setLayout(new FlowLayout());
-        directorPanel.add(new JLabel("Author: "));
+        directorPanel.add(new JLabel("Director "));
         directorTF = new JTextField(20);
         directorPanel.add(directorTF);
 
         JPanel lengthPanel = new JPanel();
         lengthPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        lengthPanel.add(new JLabel("ID: "));
+        lengthPanel.add(new JLabel("Length: "));
         lengthTF = new JTextField(20);
-        idPanel.add(idTF);
+        lengthPanel.add(lengthTF);
 
         JPanel addButtonPanel = new JPanel();
         addButtonPanel.setLayout(new BorderLayout());
@@ -71,6 +71,7 @@ public class AddDVDtoScreen extends JFrame implements ActionListener {
         add(categoryPanel);
         add(costPanel);
         add(directorPanel);
+        add(lengthPanel);
         add(addButtonPanel);
         setTitle("ADD DVD TO THE STORE");
         setResizable(false);
@@ -88,8 +89,9 @@ public class AddDVDtoScreen extends JFrame implements ActionListener {
                 float cost = Float.parseFloat(costTF.getText());
                 String director = directorTF.getText();
                 int length = Integer.parseInt(lengthTF.getText());
-                dvd = new DigitalVideoDisc(id,title, category,director,length,cost);
+                dvd = new DigitalVideoDisc(id, title, category,director,length,cost);
                 store.addMedia(dvd);
+                store.printStore();
             } catch (NumberFormatException exception) {
                 JOptionPane.showMessageDialog(null, "Invalid input", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
